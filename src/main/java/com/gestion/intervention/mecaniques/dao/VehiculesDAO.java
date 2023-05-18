@@ -56,6 +56,7 @@ public class VehiculesDAO {
             while (resultat.next()) {
                 
             	Vehicule vehicule = new Vehicule();
+            	vehicule.setNumero(resultat.getInt("numero"));
             	vehicule.setImmatriculation(resultat.getString("immatriculation"));
             	vehicule.setModele(resultat.getString("modele"));
             	vehicule.setAnnee(resultat.getString("annee"));
