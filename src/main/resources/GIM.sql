@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  Dim 14 mai 2023 à 02:44
+-- Généré le :  jeu. 18 mai 2023 à 21:22
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  5.6.40
 
@@ -45,7 +45,15 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`numero`, `civilite`, `nom`, `prenom`, `datenaissance`, `telephone`, `fix`, `fax`, `adresse`) VALUES
-(1, 'M.', 'BELOUZ', 'Tarek', '06/16/1992', '0659077382', '0659077382', '0659077382', '2 rue du centre');
+(1, 'Mme', 'MAHBOUBA', 'Cherifa', '1957-08-08', '0561381813', '0562458714', ' ', 'CITE 1013 LOGTS BT 61 Alger'),
+(2, 'Mme', 'TAHMI', 'Lamia', '1955-12-31', '0562467849', '0561392487', ' ', 'CITE BACHEDJARAH BATIMENT 38 -Bach Djerrah-Alger'),
+(3, 'Mle', 'DIAF AMROUNI', 'Ghania', '1955-12-31', '0523894562', '0619430945', '0562784254', '43, RUE ABDERRAHMANE SBAA BELLE VUE-EL HARRACH-ALGER'),
+(4, 'Mle', 'MELEK', 'Chahinaz', '1955-06-27', '0634613493', '0562529463', ' ', 'HLM AISSAT IDIR CAGE 9 3EME ETAGE-EL HARRACH ALGER'),
+(5, 'Mme', 'TECHTACHE', 'Noura', '1949-03-22', '0562757834', '0562757843', ' ', '16, ROUTE EL DJAMILA-AIN BENIAN-ALGER'),
+(6, 'Mme', 'TOUATI', 'Widad', '1965-08-14', '0561243967', '0561401836', ' ', '14 RUE DES FRERES AOUDIA-EL MOURADIA-ALGER'),
+(7, 'Mle', 'ABLOUL', 'Faiza', '1967-10-28', '0562935427', '0561486203', ' ', 'CITE DIPLOMATIQUE BT BLEU 14B N 3 DERGANA- ALGER'),
+(8, 'Mme', 'HORRA', 'Assia', '1963-12-08', '0561038500', '0562466733', ' ', '32 RUE AHMED OUAKED-DELY BRAHIM-ALGER'),
+(9, 'Mle', 'MESBAH', 'Souad', '1972-08-30', '0561024358', ' ', ' ', 'RESIDENCE CHABANI-HYDRAALGER');
 
 -- --------------------------------------------------------
 
@@ -57,16 +65,74 @@ CREATE TABLE `employes` (
   `numero` int(10) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
-  `categorie` varchar(10) NOT NULL
+  `categorie` varchar(10) NOT NULL,
+  `salaire` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `employes`
 --
 
-INSERT INTO `employes` (`numero`, `nom`, `prenom`, `categorie`) VALUES
-(7, 'BELOUZ', 'Tarek', 'Mecanicien'),
-(8, 'DJELID', 'Came', 'Assistant');
+INSERT INTO `employes` (`numero`, `nom`, `prenom`, `categorie`, `salaire`) VALUES
+(53, 'LACHEMI', 'Bouzid', 'Mécanicien', 25000),
+(54, 'BOUCHEMLA', 'Elias', 'Assistant', 10000),
+(55, 'HADJ', 'Zouhir', 'Assistant', 12000),
+(56, 'OUSSEDIK', 'Hakim', 'Mécanicien', 20000),
+(57, 'ABAD', 'Abdelhamid', 'Assistant', 13000),
+(58, 'BABACI', 'Tayeb', 'Mécanicien', 21300),
+(59, 'BELHAMIDI', 'Mourad', 'Mécanicien', 19500),
+(60, 'IGOUDJIL', 'Redouane', 'Assistant', 15000),
+(61, 'KOULA', 'Bahim', 'Mécanicien', 23100),
+(62, 'RAHALI', 'Ahcene', 'Mécanicien', 24000),
+(63, 'CHAOUI', 'Ismail', 'Assistant', 13000),
+(64, 'BADI', 'Hatem', 'Assistant', 14000),
+(65, 'MOHAMMEDI', 'Mustapha', 'Mécanicien', 24000),
+(66, 'FEKAR', 'Abdelaziz', 'Assistant', 13500),
+(67, 'SAIDOUNI', 'Wahid', 'Mécanicien', 25000),
+(68, 'BOULARAS', 'Farid', 'Assistant', 14000),
+(69, 'CHAKER', 'Nassim', 'Mécanicien', 26000),
+(71, 'TERKI', 'Yacine', 'Mécanicien', 23000),
+(72, 'TEBIBEL', 'Ahmed', 'Assistant', 17000),
+(80, 'LARDJOUNE', 'Karim', '', 25000);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `intervenants`
+--
+
+CREATE TABLE `intervenants` (
+  `numero` int(15) NOT NULL,
+  `numero_intervention` int(15) NOT NULL,
+  `numero_employe` int(15) NOT NULL,
+  `numero_vehicule` int(15) NOT NULL,
+  `date_debut` varchar(15) NOT NULL,
+  `date_fin` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `interventions`
+--
+
+CREATE TABLE `interventions` (
+  `numero` int(15) NOT NULL,
+  `numero_employe` int(10) NOT NULL,
+  `numero_vehicule` int(15) NOT NULL,
+  `date_debut` varchar(15) NOT NULL,
+  `date_fin` varchar(15) NOT NULL,
+  `cout` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `interventions`
+--
+
+INSERT INTO `interventions` (`numero`, `numero_employe`, `numero_vehicule`, `date_debut`, `date_fin`, `cout`) VALUES
+(1, 53, 1, '05/04/2023', '05/24/2023', 122),
+(2, 53, 1, '05/09/2023', '05/08/2023', 3),
+(3, 58, 4, '05/11/2023', '05/18/2023', 122);
 
 -- --------------------------------------------------------
 
@@ -183,6 +249,18 @@ ALTER TABLE `employes`
   ADD PRIMARY KEY (`numero`);
 
 --
+-- Index pour la table `intervenants`
+--
+ALTER TABLE `intervenants`
+  ADD PRIMARY KEY (`numero`);
+
+--
+-- Index pour la table `interventions`
+--
+ALTER TABLE `interventions`
+  ADD PRIMARY KEY (`numero`);
+
+--
 -- Index pour la table `marque`
 --
 ALTER TABLE `marque`
@@ -210,13 +288,25 @@ ALTER TABLE `vehicule`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `numero` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `numero` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `employes`
 --
 ALTER TABLE `employes`
-  MODIFY `numero` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `numero` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT pour la table `intervenants`
+--
+ALTER TABLE `intervenants`
+  MODIFY `numero` int(15) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `interventions`
+--
+ALTER TABLE `interventions`
+  MODIFY `numero` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `MODELE`
